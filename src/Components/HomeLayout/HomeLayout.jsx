@@ -1,16 +1,24 @@
 import React from 'react';
 import Header from '../Header/Header';
 import { Outlet } from 'react-router';
+import Footer from '../Footer/Footer';
+import LatestPost from '../LatestPost/LatestPost';
 
 const HomeLayout = () => {
     return (
         <div>
             <header>
-                <Header></Header>
+               <Header></Header>
+               <section className='w-11/12 mx-auto my-3'>
+                 <LatestPost></LatestPost>
+              </section>
             </header>
             <main>
                <Outlet></Outlet>
             </main>
+            <footer>
+                <Footer></Footer>
+            </footer>
         </div>
     );
 };

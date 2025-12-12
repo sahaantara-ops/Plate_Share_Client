@@ -7,7 +7,7 @@ function App() {
   return (
     <>
      
-      <h1>PlateShare</h1>
+      <h1></h1>
       
     </>
   )
