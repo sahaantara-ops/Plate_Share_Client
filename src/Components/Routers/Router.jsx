@@ -3,8 +3,10 @@ import { createBrowserRouter } from 'react-router';
 import HomeLayout from '../../Layouts/HomeLayout/HomeLayout';
 import Features from '../Features/Features';
 
-import Register from '../../Pages/Register/Register';
-import LogIn from '../../Pages/LogIn/LogIn';
+import SignUp from '../../Pages/SignUp/SignUp';
+import SignIn from '../../Pages/SignIn/SignIn';
+import AuthLayout from '../../Layouts/AuthLayout/AuthLayout';
+
 
 
 const Router = createBrowserRouter(
@@ -19,16 +21,16 @@ const Router = createBrowserRouter(
       },
        {
          path: "/auth",
-         element: <h2>Auth Layout</h2>,
+         element: <AuthLayout></AuthLayout>,
          children:[
-            {path:"auth/logIn",
-            element:<LogIn></LogIn>
+            {path:"/auth/signin",
+             element:<SignIn></SignIn>
             },
             {
-               path:"auth/register",
-               element:<Register></Register>
-            }
-         ]
+               path:"/auth/signup",
+               element:<SignUp></SignUp>
+            },
+         ],
       },
        {
          path: "/orders",

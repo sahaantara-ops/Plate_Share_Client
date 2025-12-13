@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from '../../assets/OIP (1).webp';
-import { NavLink } from 'react-router';
+import { Link } from 'react-router';
 import SearchBar from '../SearchBar/SearchBar';
 
 const Header = () => {
@@ -11,10 +11,10 @@ const Header = () => {
 
             
            <ul className='flex gap-6 text-2xl font-bold  mt-8 ml-4'>
-            <li><NavLink to ={'/' } className={({isActive}) => (isActive ? "text-blue-200" : "")}>Home</NavLink></li>
-            <li><NavLink to ={'/features'} className={({isActive}) => (isActive ? "text-blue-200" : "")}>Features</NavLink></li>
+            <li><Link to ={'/' } className={({isActive}) => (isActive ? "text-blue-200" : "")}>Home</Link></li>
+            <li><Link to ={'/features'} className={({isActive}) => (isActive ? "text-blue-200" : "")}>Features</Link></li>
             
-            <li><button className="btn btn-dash"><NavLink to={'/auth'} className={({isActive}) => (isActive ? "text-blue-200" : "")}>LogIn</NavLink></button></li>
+            <li><button className="btn btn-dash"><Link to={"auth/signin"} className={({isActive}) => (isActive ? "text-blue-200" : "")}>SignIn</Link></button></li>
             <li><SearchBar></SearchBar></li>
             
            </ul>
