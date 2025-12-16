@@ -1,29 +1,66 @@
 import React from 'react';
+import { AuthContext } from '../../Context/AuthContext';
+
+
 
 const AddPosts = () => {
-    return (
-      
-          
 
-        <div className="hero bg-base-200 min-h-screen">
-  <div className="hero-content flex-col lg:flex-row-reverse">
-    <div className="text-center lg:text-left">
-     
-      <p className="py-6">
-        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-        quasi. In deleniti eaque aut repudiandae et a id nisi.
-      </p>
-    </div>
-    <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+// const {user} = use(AuthContext)
+// console.log(user);
+
+
+const handleSubmit = (e) => {
+    e.preventDefault()
+    const data  = {
+        title: e.target.title.value,
+        image: e.target.imageURL.value,
+        description: e.target.description.value,
+        category: e.target.category.value,
+        // expiryDate : new Data(),
+        // status : new Data(),
+        
+    }
+
+
+
+fetch('http://localhost:3000/models')
+
+
+}
+
+return (
+    
+
+<div className="hero bg-base-200 min-h-screen">
+        
+  <div className="hero-content w-460  flex-col lg:flex-row-reverse">
+   
+    <div className="card bg-base-100 gap-3 mb-19 w-full max-w-sm shrink-0 shadow-2xl">
+      <h1 className='ml-22 mt-7 font-bold text-gray-400'> Added new post here</h1>
       <div className="card-body">
-        <fieldset className="fieldset">
-          <label className="label">Email</label>
-          <input type="email" className="input" placeholder="Email" />
-          <label className="label">Password</label>
-          <input type="password" className="input" placeholder="Password" />
-          <div><a className="link link-hover">Forgot password?</a></div>
-          <button className="btn btn-neutral mt-4">Login</button>
-        </fieldset>
+        <form onSubmit={handleSubmit} className="fieldset">
+          <label className="label">Title</label>
+          <input type="Title" name="title"className="input rounded-3xl" placeholder="Title" />
+          <label className="label">Image URL</label>
+          <input type="image URL" name="imageURL" className="input rounded-3xl" placeholder="" />
+          <label className="label">Description</label>
+          <input type="description" name="description" className="input rounded-2xl h-30 text-center" placeholder=" write food description" />
+          <div>
+            <label className="label">Category</label>
+            <select defaultValue={""}
+            name='category'
+            required
+            className="input rounded-3xl">
+              <option value="" disabled>Select Category</option>
+              <option value="breakfast">Breakfast</option>
+              <option value="lunch">Lunch</option>
+              <option value="dinner">Dinner</option>
+
+            </select>
+         
+          </div>
+          <button type = "submit"className="btn btn-neutral rounded-2xl">Add Post</button>
+        </form>
       </div>
     </div>
   </div>

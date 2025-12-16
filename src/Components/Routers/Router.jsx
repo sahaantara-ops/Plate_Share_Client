@@ -6,6 +6,7 @@ import AddPosts from '../AddPosts/AddPosts';
 import SignUp from '../../Pages/SignUp/SignUp';
 import SignIn from '../../Pages/SignIn/SignIn';
 import AuthLayout from '../../Layouts/AuthLayout/AuthLayout';
+import PostLayout from '../../Layouts/PostLayout/PostLayout';
 
 
 
@@ -33,8 +34,14 @@ const Router = createBrowserRouter(
          ],
       },
        {
-         path: "/addposts",
-         element:<AddPosts></AddPosts> 
+         path: "/newposts",
+         element:<PostLayout></PostLayout>,
+         children:[
+            {
+               path :"/newposts/addposts",
+               element:<AddPosts></AddPosts>
+            },
+         ],
       },
 ]);
 export default Router;

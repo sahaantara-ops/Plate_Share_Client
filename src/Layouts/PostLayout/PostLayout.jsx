@@ -1,0 +1,17 @@
+import React from 'react';
+import Header from '../../Components/Header/Header';
+import { Outlet } from 'react-router';
+const PostLayout = () => {
+    return (
+        <div>
+            <header>
+                <Header></Header>
+            </header>
+            <main>
+                <Outlet></Outlet>
+            </main>
+        </div>
+    );
+};
+
+export default PostLayout;
