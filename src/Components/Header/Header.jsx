@@ -16,6 +16,7 @@ const Header = () => {
             
             <li><button className="btn btn-dash"><Link to={"auth/signin"} className={({isActive}) => (isActive ? "text-blue-200" : "")}>SignIn</Link></button></li>
             <li><SearchBar></SearchBar></li>
+            <li><Link to={'/addposts'}>New Post</Link></li>
             
            </ul>
             
