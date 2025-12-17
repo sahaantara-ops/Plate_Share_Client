@@ -16,18 +16,31 @@ const handleSubmit = (e) => {
         image: e.target.imageURL.value,
         description: e.target.description.value,
         category: e.target.category.value,
-        // expiryDate : new Data(),
-        // status : new Data(),
+        // expiryDate : new Date(),
+        
         
     }
 
+ 
+
+fetch('http://localhost:3000/models',{
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+})
+.then(res => res.json())
+.then(data => {
+    console.log(data);
+
+})
+.catch(err => {
+    console.error(err);
 
 
-fetch('http://localhost:3000/models')
-
-
+})
 }
-
 return (
     
 
