@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import { auth } from '../../Firebase/Firebase.config';
 import { toast } from 'react-toastify';
@@ -28,26 +28,33 @@ const SignIn = () => {
             console.log(res);
             setUser(res.user);
             toast.success('User Sign in successfully');
+            navigate(from);
         })
         .catch((error) =>{
             console.log(error);
             toast.error(error.message);
         });
     };
+
+    const location = useLocation();
+    const from = location.state || '/';
+    const navigate = useNavigate();
+    console.log(location);    
        const handleGoogleSignin = () => {
             signInWithPopup(auth, googleProvider)
             .then((res) =>{
             console.log(res);
             setUser(res.user);
             toast.success('User Sign in successfully');
+           
         })
         .catch((error) =>{
             console.log(error);
             toast.error(error.message);
         });
     };
-       
-
+    
+   
     const handleSignOut= () =>{
          signOut(auth)
         .then(() =>{

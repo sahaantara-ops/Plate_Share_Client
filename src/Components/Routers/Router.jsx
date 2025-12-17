@@ -8,7 +8,8 @@ import SignIn from '../../Pages/SignIn/SignIn';
 import AuthLayout from '../../Layouts/AuthLayout/AuthLayout';
 import PostLayout from '../../Layouts/PostLayout/PostLayout';
 import AllFoods from '../../Layouts/AllFoods Layout/AllFoods';
-
+import PrivateRoute from '../PrivateRoutes/PrivateRoutes';
+import ModelDetails from '../ModelDatails/ModelDetails';
 
 
 const Router = createBrowserRouter(
@@ -22,8 +23,12 @@ const Router = createBrowserRouter(
          element: <AllFoods></AllFoods>,
          children:[
             {path:"/allfoods",
-               element:<Foods></Foods>,
-               loader: () => fetch('http://localhost:3000/models')
+               element:
+               <PrivateRoute>
+                <Foods></Foods>
+               </PrivateRoute>,
+               
+               loader:()=>fetch('http://localhost:3000/models')
             },             
          ]
 
@@ -47,9 +52,21 @@ const Router = createBrowserRouter(
          children:[
             {
                path :"/newposts/addposts",
-               element:<AddPosts></AddPosts>
+               element:<PrivateRoute>
+                      <AddPosts/>
+                     </PrivateRoute>   
+                      
             },
          ],
+      },
+       {
+        path: "/model-details/:id",
+        element: (
+            
+            <ModelDetails />
+            
+         
+        ),
       },
 ]);
 export default Router;
