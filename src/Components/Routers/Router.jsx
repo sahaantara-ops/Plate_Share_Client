@@ -60,7 +60,7 @@ const Router = createBrowserRouter(
          ],
       },
        {
-        path: "/model-details/:id",
+        path: "/models/:id",
         element: (
             
             <ModelDetails />

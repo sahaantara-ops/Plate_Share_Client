@@ -1,12 +1,12 @@
 import React from 'react';
 import { AuthContext } from '../../Context/AuthContext';
-
+import { use } from 'react';
 
 
 const AddPosts = () => {
 
-// const {user} = use(AuthContext)
-// console.log(user);
+const {user} = use(AuthContext)
+console.log(user);
 
 
 const handleSubmit = (e) => {
@@ -16,7 +16,8 @@ const handleSubmit = (e) => {
         image: e.target.imageURL.value,
         description: e.target.description.value,
         category: e.target.category.value,
-        // expiryDate : new Date(),
+        expiryDate : new Date(),
+       
         
         
     }

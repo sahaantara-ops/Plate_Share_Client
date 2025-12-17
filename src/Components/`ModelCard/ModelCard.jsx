@@ -1,13 +1,14 @@
 import { Link } from "react-router";
 
 export const ModelCard = ({model}) => {
-    const {name, imageURL, category, description, _id, created_by} = model
+    const {name, image, category, description, _id, created_by} = model
+    console.log(model);
   return (
-    <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+    <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 mr-10">
       <figure className="h-48 overflow-hidden">
         <img
-          src={imageURL}
-          alt={imageURL}
+          src={image}
+          alt={image}
           className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
         />
       </figure>
