@@ -10,6 +10,7 @@ import PostLayout from '../../Layouts/PostLayout/PostLayout';
 import AllFoods from '../../Layouts/AllFoods Layout/AllFoods';
 import PrivateRoute from '../PrivateRoutes/PrivateRoutes';
 import ModelDetails from '../ModelDatails/ModelDetails';
+import UpdatePost from '../../Pages/UpdatePost/UpdatePost';
 
 
 const Router = createBrowserRouter(
@@ -55,18 +56,26 @@ const Router = createBrowserRouter(
                element:<PrivateRoute>
                       <AddPosts/>
                      </PrivateRoute>   
-                      
-            },
+},
          ],
       },
        {
-        path: "/models/:id",
+        path: "/model-details/:id",
         element: (
-            
-            <ModelDetails />
-            
-         
+            <PrivateRoute>
+             <ModelDetails />
+            </PrivateRoute>
         ),
+            loader: ({params}) => fetch(`http://localhost:3000/models/${params.id}`)
+      },
+      {
+         path:"/update-post/:id",
+         element:(
+            <PrivateRoute>
+               <UpdatePost></UpdatePost>
+            </PrivateRoute>
+         ),
+         loader: ({params}) => fetch(`http://localhost:3000/models/${params.id}`)
       },
 ]);
 export default Router;
