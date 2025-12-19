@@ -1,10 +1,53 @@
 import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const ModelDetails = () => {
+  const navigate = useNavigate();
     const data = useLoaderData();
     const model = data.result
     console.log(model);
+
+
+     const handleDelete = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`https://3d-model-server.vercel.app/models/${model._id}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            navigate("/allfoods");
+
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    });
+  };
+
+
+
+
     return (
          <div className="w-270 h-160 mx-auto p-4 md:p-6 lg:p-8">
       <div className="card bg-base-100 h-full shadow-xl border border-gray-200 rounded-2xl overflow-hidden">
@@ -54,7 +97,7 @@ const ModelDetails = () => {
                 Food Request
               </button>
               <button
-                onClick={''}
+                onClick={handleDelete}
                 className="btn btn-outline rounded-full border-gray-300 hover:border-pink-500 hover:text-pink-600"
               >
                 Delete

@@ -19,7 +19,7 @@ const handleSubmit = (e) => {
 fetch(`http://localhost:3000/models/${model._id}`,{
     method: 'PUT',
     headers: {
-        'Content-Type': 'application/json',
+        'Content-Type':'application/json',
        
     },
     body: JSON.stringify(data),
@@ -49,9 +49,9 @@ fetch(`http://localhost:3000/models/${model._id}`,{
       <div className="card-body">
         <form onSubmit={handleSubmit} className="fieldset">
           <label className="label">Title</label>
-          <input type="text" defaultValue={model.name} name="title"className="input rounded-3xl" placeholder="Title" />
+          <input type="text" defaultValue={model.title} name="title"className="input rounded-3xl" placeholder="Title" />
           <label className="label">Image URL</label>
-          <input type="image URL" name="imageURL" className="input rounded-3xl" placeholder="" />
+          <input type="image URL" defaultValue={model.imageURL} name="imageURL" className="input rounded-3xl" placeholder="" />
           <label className="label">Description</label>
           <input type="description" defaultValue={model.description} name="description" className="input rounded-2xl h-30 text-center" placeholder=" write food description" />
           <div>
