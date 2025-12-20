@@ -15,6 +15,7 @@ const handleSubmit = (e) => {
         description: e.target.description.value,
         category: e.target.category.value,
      }
+     console.log(data);
 
 fetch(`http://localhost:3000/models/${model._id}`,{
     method: 'PUT',
@@ -31,8 +32,6 @@ fetch(`http://localhost:3000/models/${model._id}`,{
 })
 .catch(err => {
     console.error(err);
-
-
 })
 }
 

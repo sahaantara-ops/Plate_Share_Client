@@ -12,7 +12,7 @@ const Header = () => {
             
            <ul className='flex gap-6 text-2xl font-bold  mt-8 ml-4'>
             <li><Link to ={'/' } className={({isActive}) => (isActive ? "text-blue-200" : "")}>Home</Link></li>
-            <li><Link to ={'/allfoods'} className={({isActive}) => (isActive ? "text-blue-200" : "")}>All Foods</Link></li>
+            <li><Link to ={'/allfoods'} className={({isActive}) => (isActive ? "text-blue-200" : "")}>Available Foods</Link></li>
             
             <li><button className="btn btn-dash"><Link to={"auth/signin"} className={({isActive}) => (isActive ? "text-blue-200" : "")}>SignIn</Link></button></li>
             <li><SearchBar></SearchBar></li>

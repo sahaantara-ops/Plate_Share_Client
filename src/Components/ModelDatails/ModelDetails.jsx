@@ -21,7 +21,7 @@ const ModelDetails = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://3d-model-server.vercel.app/models/${model._id}`, {
+        fetch(`http://localhost:3000/models/${model._id}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
@@ -76,6 +76,7 @@ const ModelDetails = () => {
                <div className="badge badge-lg badge-outline text-pink-600 border-pink-600 font-medium">
                  {model.status}
               </div>
+             
               
             </div>
 

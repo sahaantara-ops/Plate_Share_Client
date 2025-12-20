@@ -1,15 +1,18 @@
 import React from 'react';
 import { AuthContext } from '../../Context/AuthContext';
 import { use } from 'react';
+import  {useNavigate}  from 'react-router-dom';
 
 
 const AddPosts = () => {
+  const navigate = useNavigate();
 
 const {user} = use(AuthContext)
 console.log(user);
 
 
 const handleSubmit = (e) => {
+ 
     e.preventDefault()
     const data  = {
         title: e.target.title.value,
@@ -17,10 +20,8 @@ const handleSubmit = (e) => {
         description: e.target.description.value,
         category: e.target.category.value,
         expiryDate : new Date(),
-       
+       }
         
-        
-    }
 
  
 
@@ -35,6 +36,7 @@ fetch('http://localhost:3000/models',{
 .then(res => res.json())
 .then(data => {
     console.log(data);
+    navigate("/allfoods");
 
 })
 .catch(err => {
