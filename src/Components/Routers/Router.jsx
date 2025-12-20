@@ -3,7 +3,8 @@ import { createBrowserRouter } from 'react-router';
 import HomeLayout from '../../Layouts/HomeLayout/HomeLayout';
 import Foods from '../../Pages/Foods/Foods';
 import AddPosts from '../AddPosts/AddPosts';
-import SignUp from '../../Pages/SignUp/SignUp';
+import SignUp from "../../Pages/SignUp/SignUP";
+
 import SignIn from '../../Pages/SignIn/SignIn';
 import AuthLayout from '../../Layouts/AuthLayout/AuthLayout';
 import PostLayout from '../../Layouts/PostLayout/PostLayout';
@@ -12,6 +13,7 @@ import PrivateRoute from '../PrivateRoutes/PrivateRoutes';
 import ModelDetails from '../ModelDatails/ModelDetails';
 import UpdatePost from '../../Pages/UpdatePost/UpdatePost';
 import Home from '../Home/Home';
+import AvailableFoods from '../AvailableFoods/AvailableFoods';
 
 
 const Router = createBrowserRouter(
@@ -93,6 +95,17 @@ const Router = createBrowserRouter(
          ),
          loader: ({params}) => fetch(`http://localhost:3000/models/${params.id}`)
       },
+     {
+      path:"/availablefoods",
+      element:(<AvailableFoods></AvailableFoods>),
+
+      loader:()=>fetch('http://localhost:3000/models')
+   
+  
+
+     }
+    
+
 ]);
 export default Router;
     

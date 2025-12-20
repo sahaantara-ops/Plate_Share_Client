@@ -25,6 +25,17 @@ const SignUP = () => {
             console.log(password.length);
                 return;
             }
+            if (!/[A-Z]/.test(password)) {
+           toast.error("Password must contain at least one uppercase letter");
+           return;
+           }
+
+          if (!/[a-z]/.test(password)) {
+          toast.error("Password must contain at least one lowercase letter");
+          return;
+          }
+
+
       
              createUserWithEmailAndPassword(auth, email, password)  
                     .then((res) =>{

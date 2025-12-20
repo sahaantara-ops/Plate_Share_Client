@@ -22,6 +22,12 @@ const SignIn = () => {
         const password = e.target.password?.value;
         console.log('SignIn clicked',{email,password});
 
+        if (!email || !password) {
+      toast.error("Email and password are required");
+      return;
+    }
+           
+
 
           signInWithEmailAndPassword(auth,email,password)
             .then((res) =>{
