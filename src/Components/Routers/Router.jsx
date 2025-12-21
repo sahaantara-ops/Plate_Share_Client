@@ -19,11 +19,11 @@ import AvailableFoods from '../AvailableFoods/AvailableFoods';
 const Router = createBrowserRouter(
     [
       {
-         path: "/home",
+         path: "/",
          element: <HomeLayout></HomeLayout>,
          children:[
             {
-               path:"/home",
+               path:"/",
                element:
                <PrivateRoute>
                <Home></Home>
@@ -84,7 +84,7 @@ const Router = createBrowserRouter(
              <ModelDetails />
             </PrivateRoute>
         ),
-            loader: ({params}) => fetch(`http://localhost:3000/models/${params.id}`)
+           
       },
       {
          path:"/update-post/:id",
@@ -97,13 +97,9 @@ const Router = createBrowserRouter(
       },
      {
       path:"/availablefoods",
-      element:(<AvailableFoods></AvailableFoods>),
-
-      loader:()=>fetch('http://localhost:3000/models')
-   
-  
-
-     }
+      element:<AvailableFoods/>,
+       loader:()=>fetch('http://localhost:3000/availablefoods')
+}
     
 
 ]);

@@ -9,6 +9,7 @@ import { FaEye } from "react-icons/fa";
 import { useState } from 'react';
 import { GoogleAuthProvider } from "firebase/auth";
 
+
 const googleProvider = new GoogleAuthProvider();
 
 
@@ -16,6 +17,8 @@ const SignIn = () => {
      
     const [user, setUser] = useState(null);
     const [show, setShow] = useState(false);
+
+  
      const handleSignIn =(e) =>{
         e.preventDefault();
         const email = e.target.email?.value;

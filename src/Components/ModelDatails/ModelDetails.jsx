@@ -1,13 +1,33 @@
-import React from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthContext';
+import { use } from 'react';
 
 const ModelDetails = () => {
   const navigate = useNavigate();
-    const data = useLoaderData();
-    const model = data.result
-    console.log(model);
+    const {id} = useParams();
+    const[model,setModel] = useState({})
+    const[loading,setLoading] = useState(true)
+    const {user} = use(AuthContext)
+
+   
+
+    useEffect(()=>{
+       fetch(`http://localhost:3000/models/${id}`,{
+              headers:{
+               authorization:`Bearer ${user.accessToken}`
+              }
+            })
+            .then(res => res.json())
+            .then(data => {
+              console.log(data)
+              setModel(data.result)
+              setLoading (false)
+            })
+            
+    },[])
 
 
      const handleDelete = () => {
@@ -46,7 +66,9 @@ const ModelDetails = () => {
   };
 
 
-
+  if(loading){
+    return<div>Loading....</div>
+  }
 
     return (
          <div className="w-270 h-160 mx-auto p-4 md:p-6 lg:p-8">
@@ -65,7 +87,7 @@ const ModelDetails = () => {
               {model.name}
             </h1>
 
-            <div className="flex gap-3">
+            <div className="flex gap-2">
               <div className="badge badge-lg badge-outline text-pink-600 border-pink-600 font-medium">
                 {model.category}
               </div>
@@ -74,7 +96,7 @@ const ModelDetails = () => {
                 Quantity {model.quantity}
               </div>
                <div className="badge badge-lg badge-outline text-pink-600 border-pink-600 font-medium">
-                 {model.status}
+                 {model.food_status}
               </div>
              
               
@@ -83,6 +105,16 @@ const ModelDetails = () => {
             <p className="text-gray-600 leading-relaxed text-base md:text-lg">
               {model.description}
             </p>
+            <div className=''>
+               <div className="badge badge-lg badge-outline text-pink-600 border-pink-600 font-medium">
+                 Location:{model.pickup_location}
+              </div>
+              
+              <div className="badge badge-lg badge-outline text-pink-600 border-pink-600 font-medium mt-2">
+                 Expiry Date:{model.expiryDate}
+              </div>
+              
+            </div>
 
             <div className="flex gap-3 mt-6">
               <Link
