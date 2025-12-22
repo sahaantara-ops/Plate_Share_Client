@@ -25,7 +25,7 @@ const handleSubmit = (e) => {
 
  
 
-fetch('http://localhost:3000/models',{
+fetch('https://server-ten-teal-26.vercel.app/models',{
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',

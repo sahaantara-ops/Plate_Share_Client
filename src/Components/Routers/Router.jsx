@@ -14,6 +14,7 @@ import ModelDetails from '../ModelDatails/ModelDetails';
 import UpdatePost from '../../Pages/UpdatePost/UpdatePost';
 import Home from '../Home/Home';
 import AvailableFoods from '../AvailableFoods/AvailableFoods';
+import Errorpage from '../ErrorPage/Errorpage';
 
 
 const Router = createBrowserRouter(
@@ -29,7 +30,7 @@ const Router = createBrowserRouter(
                <Home></Home>
                </PrivateRoute>,
               loader: async () => {
-        const res = await fetch("http://localhost:3000/latest-food");
+        const res = await fetch("https://server-ten-teal-26.vercel.app/latest-food");
         if (!res.ok) throw new Error("Failed to fetch latest food");
         const data = await res.json(); // parse JSON
         return data;
@@ -47,7 +48,7 @@ const Router = createBrowserRouter(
                 <Foods></Foods>
                </PrivateRoute>,
                
-               loader:()=>fetch('http://localhost:3000/models')
+               loader:()=>fetch('https://server-ten-teal-26.vercel.app/models')
             },             
          ]
 
@@ -93,13 +94,17 @@ const Router = createBrowserRouter(
                <UpdatePost></UpdatePost>
             </PrivateRoute>
          ),
-         loader: ({params}) => fetch(`http://localhost:3000/models/${params.id}`)
+         loader: ({params}) => fetch(`https://server-ten-teal-26.vercel.app/models/${params.id}`)
       },
      {
       path:"/availablefoods",
       element:<AvailableFoods/>,
-       loader:()=>fetch('http://localhost:3000/availablefoods')
-}
+       loader:()=>fetch('https://server-ten-teal-26.vercel.app/availablefoods')
+    },
+    {
+      path:"*",
+      element:<Errorpage></Errorpage>
+    }
     
 
 ]);

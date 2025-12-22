@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '../../assets/OIP (1).webp';
 import { Link } from 'react-router';
-import SearchBar from '../SearchBar/SearchBar';
+
 
 const Header = () => {
     return (
@@ -15,7 +15,7 @@ const Header = () => {
             <li><Link to ={'/availablefoods'} className={({isActive}) => (isActive ? "text-blue-200" : "")}>Available Foods</Link></li>
             
             <li><button className="btn btn-dash"><Link to={"auth/signin"} className={({isActive}) => (isActive ? "text-blue-200" : "")}>SignIn</Link></button></li>
-            <li><SearchBar></SearchBar></li>
+            
             <li><Link to={'/newposts/addposts'}>New Post</Link></li>
             
            </ul>

@@ -15,7 +15,7 @@ const ModelDetails = () => {
    
 
     useEffect(()=>{
-       fetch(`http://localhost:3000/models/${id}`,{
+       fetch(`https://server-ten-teal-26.vercel.app/models/${id}`,{
               headers:{
                authorization:`Bearer ${user.accessToken}`
               }
@@ -41,7 +41,7 @@ const ModelDetails = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/models/${model._id}`, {
+        fetch(`https://server-ten-teal-26.vercel.app/models/${model._id}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
@@ -84,7 +84,7 @@ const ModelDetails = () => {
 
           <div className="flex flex-col justify-center space-y-4 w-full md:w-1/2">
             <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
-              {model.name}
+              {model.title}
             </h1>
 
             <div className="flex gap-2">

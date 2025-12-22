@@ -17,7 +17,7 @@ const handleSubmit = (e) => {
      }
      console.log(data);
 
-fetch(`http://localhost:3000/models/${model._id}`,{
+fetch(`https://server-ten-teal-26.vercel.app/models/${model._id}`,{
     method: 'PUT',
     headers: {
         'Content-Type':'application/json',

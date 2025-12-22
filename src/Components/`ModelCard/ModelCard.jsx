@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 
 export const ModelCard = ({model}) => {
-    const {name, image, category, description, _id, created_by} = model
+    const {title, image, category, description, _id, created_by} = model
     console.log(model);
   return (
     <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 mr-10">
@@ -13,7 +13,7 @@ export const ModelCard = ({model}) => {
         />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">{name}</h2>
+        <h2 className="card-title">{title}</h2>
         <div className="badge text-xs badge-xs badge-secondary rounded-full">{category}</div>
         <div className="text-xs text-secondary">{created_by}</div>
         <p className="line-clamp-1">

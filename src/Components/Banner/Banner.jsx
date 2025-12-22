@@ -1,5 +1,20 @@
-import React from 'react';
+
 import { Link } from 'react-router';
+
+
+
+const handleSearch =(e) =>{
+  e.preventDefault()
+  const search_text = e.target.search.value
+  console.log(search_text)
+
+  fetch(`https://server-ten-teal-26.vercel.app/search?search=${search_text}`)
+  .then(res=>res.json())
+  .then(data=>{
+    console.log(data)
+    
+  })
+}
 
 const Banner = () => {
     return (
@@ -24,10 +39,29 @@ const Banner = () => {
           Reduce food waste and help those in need.
         </p>
 
-        <div className="flex justify-center gap-4">
-          <button className="px-6 py-3 bg-green-500 hover:bg-green-600 rounded-lg font-semibold transition">
+      <div className="flex justify-center gap-4">
+        
+      <form onSubmit={handleSearch}>
+      <label className="input">
+      <svg className="h-[1em] " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <g
+      strokeLinejoin="round"
+      strokeLinecap="round"
+      strokeWidth="2.5"
+      fill=""
+      stroke="black"
+      >
+      <circle cx="11" cy="11" r="8"></circle>
+      <path d="m21 21-4.3-4.3"></path>
+      </g>
+     </svg>
+     <input className='text-black'name="search" type="search" required placeholder="Search" />
+     </label>
+      <button className="px-6 py-3 bg-green-500 hover:bg-green-600 rounded-lg font-semibold transition">
             Search Food
-          </button>
+      </button>
+      </form>
+          
 
           <button >
           <Link to='/allfoods' className="px-6 py-3 border border-white hover:bg-white hover:text-black rounded-lg font-semibold transition">  View All Foods
